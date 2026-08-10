@@ -10,12 +10,12 @@ Its primary purpose is to support our existing publicity workflow by keeping fre
 
 | File | Description | Dimensions |
 | --- | --- | --- |
-| `eduhk-robotics-team-logo.png` | Horizontal lockup: emblem + wordmark | 1080 × 462 |
-| `eduhk-robotics-team-logo-medium.png` | Horizontal lockup, medium | 540 × 231 |
-| `eduhk-robotics-team-logo-small.png` | Horizontal lockup, small | 270 × 116 |
-| `eduhk-robotics-team-emblem.png` | Square emblem, primary version | 512 × 512 |
-| `eduhk-robotics-team-emblem-full.png` | Square emblem, highest resolution | 4501 × 4501 |
-| `eduhk-robotics-team-emblem-small.png` | Square emblem, small icon version | 65 × 65 |
+| `team-logo.png` | Horizontal lockup: emblem + wordmark | 1080 × 462 |
+| `team-logo-medium.png` | Horizontal lockup, medium | 540 × 231 |
+| `team-logo-small.png` | Horizontal lockup, small | 270 × 116 |
+| `team-emblem.png` | Square emblem, primary version | 512 × 512 |
+| `team-emblem-full.png` | Square emblem, highest resolution | 4501 × 4501 |
+| `team-emblem-small.png` | Square emblem, small icon version | 65 × 65 |
 
 The emblem variants are also used on the team website: `logo-primary.png` (favicon and site header), `logo-full.png` (social share image), and `logo-footer.png` (site footer).
 
@@ -25,22 +25,22 @@ QR code for the team's WeChat official account **EdUHK_Robotics** (`http://weixi
 
 | File | Dimensions |
 | --- | --- |
-| `eduhk-robotics-team-wechat-qrcode.png` | 1280 × 1280 |
-| `eduhk-robotics-team-wechat-qrcode-430.png` | 430 × 430 |
-| `eduhk-robotics-team-wechat-qrcode-258.png` | 258 × 258 |
+| `team-wechat-qrcode.png` | 1280 × 1280 |
+| `team-wechat-qrcode-430.png` | 430 × 430 |
+| `team-wechat-qrcode-258.png` | 258 × 258 |
 
 ### Favicons (`favicon/`)
 
-Derived from `eduhk-robotics-team-emblem.png`:
+Derived from `team-emblem.png`:
 
 | File | Description | Dimensions |
 | --- | --- | --- |
 | `favicon.ico` | Multi-size ICO (16/32/48) for browsers and Windows | — |
-| `eduhk-robotics-favicon-16.png` | Small browser favicon | 16 × 16 |
-| `eduhk-robotics-favicon-32.png` | Standard browser favicon | 32 × 32 |
-| `eduhk-robotics-favicon-48.png` | Large browser favicon | 48 × 48 |
-| `eduhk-robotics-favicon-180.png` | Apple touch icon | 180 × 180 |
-| `eduhk-robotics-favicon-192.png` | Android home screen icon | 192 × 192 |
+| `favicon-16.png` | Small browser favicon | 16 × 16 |
+| `favicon-32.png` | Standard browser favicon | 32 × 32 |
+| `favicon-48.png` | Large browser favicon | 48 × 48 |
+| `favicon-180.png` | Apple touch icon | 180 × 180 |
+| `favicon-192.png` | Android home screen icon | 192 × 192 |
 
 ## Use of Assets
 
