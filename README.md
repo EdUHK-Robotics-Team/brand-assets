@@ -11,11 +11,23 @@ Its primary purpose is to support our existing publicity workflow by keeping fre
 | File | Description | Dimensions |
 | --- | --- | --- |
 | `eduhk-robotics-team-logo.png` | Horizontal lockup: emblem + wordmark | 1080 × 462 |
+| `eduhk-robotics-team-logo-medium.png` | Horizontal lockup, medium | 540 × 231 |
+| `eduhk-robotics-team-logo-small.png` | Horizontal lockup, small | 270 × 116 |
 | `eduhk-robotics-team-emblem.png` | Square emblem, primary version | 512 × 512 |
 | `eduhk-robotics-team-emblem-full.png` | Square emblem, highest resolution | 4501 × 4501 |
 | `eduhk-robotics-team-emblem-small.png` | Square emblem, small icon version | 65 × 65 |
 
 The emblem variants are also used on the team website: `logo-primary.png` (favicon and site header), `logo-full.png` (social share image), and `logo-footer.png` (site footer).
+
+### WeChat QR Code (`logos/`)
+
+QR code for the team's WeChat official account **EdUHK_Robotics** (`http://weixin.qq.com/r/mp/NRLL06nEnvThre2w90cn`). Also used on the team website (`/logos/wechat-qrcode.jpg`).
+
+| File | Dimensions |
+| --- | --- |
+| `eduhk-robotics-team-wechat-qrcode.png` | 1280 × 1280 |
+| `eduhk-robotics-team-wechat-qrcode-430.png` | 430 × 430 |
+| `eduhk-robotics-team-wechat-qrcode-258.png` | 258 × 258 |
 
 ### Favicons (`favicon/`)
 
