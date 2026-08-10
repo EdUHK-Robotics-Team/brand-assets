@@ -4,6 +4,32 @@ This repository stores commonly used brand assets of the EdUHK Robotics Team, pa
 
 Its primary purpose is to support our existing publicity workflow by keeping frequently used assets in one place, making them easier for team members to access and reuse across different materials and platforms.
 
+## Asset Inventory
+
+### Logos (`logos/`)
+
+| File | Description | Dimensions |
+| --- | --- | --- |
+| `eduhk-robotics-team-logo.png` | Horizontal lockup: emblem + wordmark | 1080 × 462 |
+| `eduhk-robotics-team-emblem.png` | Square emblem, primary version | 512 × 512 |
+| `eduhk-robotics-team-emblem-full.png` | Square emblem, highest resolution | 4501 × 4501 |
+| `eduhk-robotics-team-emblem-small.png` | Square emblem, small icon version | 65 × 65 |
+
+The emblem variants are also used on the team website: `logo-primary.png` (favicon and site header), `logo-full.png` (social share image), and `logo-footer.png` (site footer).
+
+### Favicons (`favicon/`)
+
+Derived from `eduhk-robotics-team-emblem.png`:
+
+| File | Description | Dimensions |
+| --- | --- | --- |
+| `favicon.ico` | Multi-size ICO (16/32/48) for browsers and Windows | — |
+| `eduhk-robotics-favicon-16.png` | Small browser favicon | 16 × 16 |
+| `eduhk-robotics-favicon-32.png` | Standard browser favicon | 32 × 32 |
+| `eduhk-robotics-favicon-48.png` | Large browser favicon | 48 × 48 |
+| `eduhk-robotics-favicon-180.png` | Apple touch icon | 180 × 180 |
+| `eduhk-robotics-favicon-192.png` | Android home screen icon | 192 × 192 |
+
 ## Use of Assets
 
 Assets in this repository are primarily maintained for the EdUHK Robotics Team's internal publicity and communications work.
