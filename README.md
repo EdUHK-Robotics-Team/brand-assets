@@ -42,6 +42,10 @@ Derived from `team-emblem.png`:
 | `favicon-180.png` | Apple touch icon | 180 × 180 |
 | `favicon-192.png` | Android home screen icon | 192 × 192 |
 
+### MD2Card Template (`md2card-template/`)
+
+Our current publicity pipeline uses the Markdown and CSS templates in [`md2card-template/`](./md2card-template/) to render card images with [md2card](https://md2card.cn). See the folder README for usage and a rendered example.
+
 ## Use of Assets
 
 Assets in this repository are primarily maintained for the EdUHK Robotics Team's internal publicity and communications work.
