@@ -1,0 +1,207 @@
+/* =============================
+   卡片整体样式
+   ============================= */
+.card {
+  --green-dark: #184e3a;   /* 深绿色：边框 / 主标题 / 强调 */
+  --green-main: #225b46;   /* 主绿色：副标题 / 链接 / 点缀 */
+  --gray-bg: #f7f7f7;      /* 卡片背景浅灰色 */
+  --ink: #1a1a1a;          /* 正文主文字颜色 */
+  --line: #e0e5e3;         /* 分隔线 / 边框浅灰色 */
+
+  background: var(--gray-bg);          /* 浅灰背景 */
+  color: var(--ink);
+  border: 8px solid #3e4e47; /* 边框颜色调整 */
+  border-radius: 18px;                 /* 圆角 */
+  max-width: 780px;                    /* 最大宽度 */
+  margin: 32px auto;                   /* 居中 */
+  box-shadow: 0 6px 18px rgba(0,0,0,.05); /* 阴影 */
+  font: 400 16px/1.7 "PingFang TC","Noto Sans TC",sans-serif;
+  overflow: hidden; /* 避免图像外溢 */
+}
+
+/* =============================
+   页首：放置校徽Logo
+   ============================= */
+.card .card-header {
+  background: var(--gray-bg); /* 与正文背景保持一致 */
+  text-align: left;
+  padding: 12px 0 4px; /* 上下留白稍微调整 */
+  border-bottom: 1px solid var(--line);
+}
+
+.card .card-header::before {
+  content: "";
+  display: inline-block;
+  width: 148px;
+  height: 63px;
+  margin-left: 10px;
+  background: url("https://github.com/EdUHK-Robotics-Team/brand-assets/raw/main/logos/team-logo-small.png") left center/contain no-repeat;
+  background-color: var(--gray-bg); /* 保证底色一致 */
+}
+
+
+/* =============================
+   MD2Card 公众号模式预览兼容
+   注意：只覆盖 Logo 和顶部空间，不改左右 padding。
+   左右 padding 继续完全沿用原本 .card .card-content 的规则，
+   这样复制到微信公众号后台时仍保持原有留白。
+   ============================= */
+.card.wechat .card-content {
+  background-color: var(--gray-bg);
+  background-image:
+    url("https://github.com/EdUHK-Robotics-Team/brand-assets/raw/main/logos/team-logo-small.png"),
+    linear-gradient(var(--line), var(--line));
+  background-repeat: no-repeat, no-repeat;
+  background-position: 10px 12px, 0 79px;
+  background-size: 148px 63px, 100% 1px;
+
+  /* 只增加顶部空间；不使用 padding shorthand 覆盖左右留白 */
+  padding-top: 120px;
+}
+
+/* =============================
+   内容区整体留白
+   ============================= */
+.card .card-content {
+  padding: 40px 48px;  /* 增大内边距，保持留白 */
+}
+.card .card-content-inner {
+  display: block;
+}
+
+/* =============================
+   标题样式
+   ============================= */
+.card .card-content-inner h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--green-dark); /* 主标题深绿色 */
+  margin-bottom: 16px;
+}
+.card .card-content-inner h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--green-main); /* 副标题绿色 */
+  margin-top: 24px;
+}
+.card .card-content-inner h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--green-dark);
+  margin-top: 20px;
+}
+
+/* =============================
+   正文样式
+   ============================= */
+.card .card-content-inner p {
+  margin: 14px 0;
+  color: var(--ink);
+}
+.card .card-content-inner strong {
+  color: var(--green-dark);  /* 粗体字改为深绿色 */
+  font-weight: 700;
+}
+
+/* =============================
+   列表样式
+   ============================= */
+.card .card-content-inner ul,
+.card .card-content-inner ol {
+  margin: 10px 0 16px;
+  padding-left: 1.5em;
+}
+.card .card-content-inner li {
+  margin: 6px 0;
+}
+
+/* =============================
+   引用块（提示/说明）
+   ============================= */
+.card .card-content-inner blockquote {
+  border-left: 4px solid var(--green-dark);
+  background: #fff;
+  padding: 16px 20px;
+  border-radius: 8px;
+  color: var(--ink);
+  font-weight: 500;
+  margin: 20px 0;
+}
+
+/* =============================
+   强调按钮（招募信息 / 链接）
+   用法：<p class="cta">内容</p>
+   ============================= */
+.card .card-content-inner .cta {
+  display: block;
+  background: var(--green-dark);
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  padding: 14px 20px;
+  border-radius: 12px;
+  margin: 28px 0;
+  text-decoration: none;
+}
+
+/* =============================
+   图片样式
+   ============================= */
+.card .card-content-inner img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 16px auto;
+  display: block;
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+/* =============================
+   分割线（hr）
+   ============================= */
+.card .card-content-inner hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 24px 0;
+}
+
+/* =============================
+   注释文字（note）
+   用法：<span class="note">注释内容</span>
+   ============================= */
+.card .card-content-inner .note {
+  font-size: 8px;        /* 特小字体，脚注效果 */
+  color: #666666;        /* 灰色，弱化对比 */
+  line-height: 1.4;
+  display: inline-block; /* 默认内联，但可单独成行 */
+  margin-top: 4px;
+}
+.card .card-content-inner p .note {
+  display: block;        /* 独占一行 */
+  text-align: right;     /* 右对齐，更像论文脚注 */
+  margin-right: 2px;
+}
+
+/* =============================
+   小屏幕适配
+   ============================= */
+@media (max-width: 480px) {
+  .card {
+    border-radius: 14px;
+    margin: 20px;
+  }
+  .card .card-content {
+    padding: 24px 20px;
+  }
+  .card .card-header::before {
+    width: 70px;
+    height: 70px;
+  }
+  .card .card-content-inner h1 {
+    font-size: 24px;
+  }
+  .card .card-content-inner h2 {
+    font-size: 18px;
+  }
+}
