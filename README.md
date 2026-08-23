@@ -46,6 +46,10 @@ Derived from `team-emblem.png`:
 
 Our current publicity pipeline uses the Markdown and CSS templates in [`md2card-template/`](./md2card-template/) to render card images with [md2card](https://md2card.cn). See the folder README for usage and a rendered example.
 
+### LaTeX Template (`latex-template/`)
+
+The A4 technical-documentation template in [`latex-template/`](./latex-template/) carries the same green visual system into printable reports. The included example is the Robocon 2026 EdUHK Robotics Team R2 Arduino IMU and encoder receiver program by Steven Zhang Yancheng, sourced from [`enc_imu_may31.ino`](https://github.com/Steven-ZYC/Robocon2026_r2/blob/dev/2026R2_ws/src/arduino_sensor_driver/docs/enc_imu_may31.ino) in the `Robocon2026_r2` repository. See the folder README for XeLaTeX build instructions and the rendered preview.
+
 ## Use of Assets
 
 Assets in this repository are primarily maintained for the EdUHK Robotics Team's internal publicity and communications work.

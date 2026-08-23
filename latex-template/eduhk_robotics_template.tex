@@ -1,0 +1,389 @@
+% !TeX program = xelatex
+\documentclass[11pt,a4paper,fontset=fandol]{ctexart}
+
+% ============================================================
+% EdUHK Robotics Team - project CSS-matched LaTeX template
+% Compile with XeLaTeX (recommended) or LuaLaTeX.
+% ============================================================
+
+% ---------- Page geometry ----------
+\usepackage[
+  a4paper,
+  top=30mm,
+  bottom=24mm,
+  left=22mm,
+  right=22mm,
+  headheight=20mm,
+  headsep=5mm,
+  footskip=12mm
+]{geometry}
+
+% ---------- Fonts ----------
+\usepackage{fontspec}
+\setmainfont{texgyreheros}[
+  Extension=.otf,
+  UprightFont=*-regular,
+  BoldFont=*-bold,
+  ItalicFont=*-italic,
+  BoldItalicFont=*-bolditalic
+]
+\setsansfont{texgyreheros}[
+  Extension=.otf,
+  UprightFont=*-regular,
+  BoldFont=*-bold,
+  ItalicFont=*-italic,
+  BoldItalicFont=*-bolditalic
+]
+\setmonofont{texgyrecursor}[
+  Extension=.otf,
+  UprightFont=*-regular,
+  BoldFont=*-bold,
+  ItalicFont=*-italic,
+  BoldItalicFont=*-bolditalic
+]
+\IfFontExistsTF{Noto Sans CJK SC}{%
+  \setCJKmonofont{Noto Sans CJK SC}[AutoFakeSlant=0.2]%
+}{%
+  \IfFontExistsTF{Microsoft YaHei}{%
+    \setCJKmonofont{Microsoft YaHei}[AutoFakeSlant=0.2]%
+  }{%
+    \setCJKmonofont{FandolFang-Regular}[AutoFakeSlant=0.2]%
+  }%
+}
+\renewcommand{\familydefault}{\sfdefault}
+
+% ---------- Core packages ----------
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage[most]{tcolorbox}
+\usepackage{listings}
+\usepackage{xparse}
+
+% ============================================================
+% 1. Brand tokens - synchronized with robotics_md_template.css
+% ============================================================
+\definecolor{BrandGreenDark}{HTML}{184E3A}
+\definecolor{BrandGreen}{HTML}{225B46}
+\definecolor{BrandGreenSoft}{HTML}{EDF2F0}
+\definecolor{Ink}{HTML}{1A1A1A}
+\definecolor{Muted}{HTML}{66736E}
+\definecolor{Rule}{HTML}{E0E5E3}
+\definecolor{PaperSoft}{HTML}{F7F7F7}
+\definecolor{CodeBlue}{HTML}{EEF7FF}
+\definecolor{CodeBorder}{HTML}{B8DDF7}
+\definecolor{CodeInk}{HTML}{17324D}
+
+% ============================================================
+% 2. Document metadata - change these for each document
+% ============================================================
+\newcommand{\DocumentKicker}{EDUHK ROBOTICS TEAM}
+\newcommand{\DocumentTitle}{Technical Documentation Template}
+\newcommand{\DocumentSubtitle}{Robocon 2026 R2 Arduino IMU and encoder receiver example}
+\newcommand{\DocumentAuthor}{Steven Zhang Yancheng}
+\newcommand{\DocumentDate}{\today}
+\newcommand{\DocumentVersion}{v1.4}
+\newcommand{\CodeSourceURL}{https://github.com/Steven-ZYC/Robocon2026_r2/blob/dev/2026R2_ws/src/arduino_sensor_driver/docs/enc_imu_may31.ino}
+
+% ============================================================
+% 3. Portable paths
+% Compile from latex-template/ or from the repository root.
+% ============================================================
+\newcommand{\RoboticsLogo}[1][39mm]{%
+  \IfFileExists{../logos/team-logo.png}{%
+    \includegraphics[width=#1]{../logos/team-logo.png}%
+  }{%
+    \IfFileExists{logos/team-logo.png}{%
+      \includegraphics[width=#1]{logos/team-logo.png}%
+    }{%
+      \IfFileExists{../logos/team-logo-medium.png}{%
+        \includegraphics[width=#1]{../logos/team-logo-medium.png}%
+      }{%
+        \IfFileExists{logos/team-logo-medium.png}{%
+          \includegraphics[width=#1]{logos/team-logo-medium.png}%
+        }{%
+          \fbox{\scriptsize\color{Muted}Place \texttt{logos/team-logo.png} here}%
+        }%
+      }%
+    }%
+  }%
+}
+
+\IfFileExists{enc_imu_may31.ino}{%
+  \newcommand{\CodeExampleFile}{enc_imu_may31.ino}%
+}{%
+  \newcommand{\CodeExampleFile}{latex-template/enc_imu_may31.ino}%
+}
+
+% ============================================================
+% 4. Base typography and spacing
+% ============================================================
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em}
+\linespread{1.06}
+\setlist[itemize]{leftmargin=1.5em,itemsep=0.25em,topsep=0.35em}
+\setlist[enumerate]{leftmargin=1.7em,itemsep=0.25em,topsep=0.35em}
+\color{Ink}
+\RenewDocumentCommand{\textbf}{m}{{\bfseries\color{BrandGreenDark}#1}}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=BrandGreenDark,
+  urlcolor=BrandGreenDark,
+  citecolor=BrandGreenDark,
+  pdftitle={\DocumentTitle},
+  pdfauthor={\DocumentAuthor}
+}
+
+% ============================================================
+% 5. Header / footer
+% ============================================================
+\fancypagestyle{robotics}{%
+  \fancyhf{}
+  \fancyhead[L]{\RoboticsLogo[35mm]}
+  \fancyhead[R]{\small\color{Muted}\DocumentVersion}
+  \fancyfoot[C]{%
+    \makebox[\textwidth][c]{%
+      {\color{Rule}\rule{0.39\textwidth}{0.5pt}}%
+      \hspace{3mm}%
+      {\small\bfseries\color{BrandGreenDark}\thepage}%
+      \hspace{3mm}%
+      {\color{Rule}\rule{0.39\textwidth}{0.5pt}}%
+    }%
+  }
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\headrule}{\hbox to\headwidth{\color{Rule}\leaders\hrule height \headrulewidth\hfill}}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\pagestyle{robotics}
+
+% ============================================================
+% 6. Section styling
+% ============================================================
+\titleformat{\section}
+  {\fontsize{21}{26}\selectfont\bfseries\color{BrandGreenDark}}
+  {}{0pt}{}
+\titlespacing*{\section}{0pt}{1.8em}{0.75em}
+
+\titleformat{\subsection}
+  {\fontsize{15}{19}\selectfont\bfseries\color{BrandGreen}}
+  {}{0pt}{}
+\titlespacing*{\subsection}{0pt}{1.5em}{0.5em}
+
+\titleformat{\subsubsection}
+  {\fontsize{13.5}{17}\selectfont\bfseries\color{BrandGreenDark}}
+  {}{0pt}{}
+\titlespacing*{\subsubsection}{0pt}{1.25em}{0.4em}
+
+\newcommand{\eyebrow}[1]{%
+  {\fontsize{8.5}{10}\selectfont\bfseries\color{BrandGreen}\MakeUppercase{#1}}\par\vspace{0.18em}%
+}
+
+% ============================================================
+% 7. Reusable cards / callouts
+% ============================================================
+\newtcolorbox{infobox}[1][]{
+  enhanced,
+  breakable,
+  colback=white,
+  colframe=Rule,
+  boxrule=0.5pt,
+  arc=2.1mm,
+  left=4mm,right=4mm,top=3.2mm,bottom=3.2mm,
+  borderline west={3pt}{0pt}{BrandGreenDark},
+  fonttitle=\bfseries,
+  coltitle=BrandGreenDark,
+  title=#1
+}
+
+\newtcolorbox{neutralbox}[1][]{
+  enhanced,
+  breakable,
+  colback=PaperSoft,
+  colframe=Rule,
+  boxrule=0.5pt,
+  arc=2.2mm,
+  left=4mm,right=4mm,top=3.2mm,bottom=3.2mm,
+  fonttitle=\bfseries,
+  coltitle=Ink,
+  title=#1
+}
+
+% ============================================================
+% 8. Code style
+% ============================================================
+\lstdefinestyle{roboticscode}{
+  basicstyle=\ttfamily\footnotesize\color{CodeInk},
+  backgroundcolor=\color{CodeBlue},
+  frame=single,
+  rulecolor=\color{CodeBorder},
+  framerule=0.6pt,
+  framesep=7pt,
+  xleftmargin=0pt,
+  xrightmargin=0pt,
+  breaklines=true,
+  breakatwhitespace=false,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  tabsize=2,
+  numbers=left,
+  numberstyle=\scriptsize\color{Muted},
+  numbersep=10pt,
+  keywordstyle=\bfseries\color{BrandGreenDark},
+  commentstyle=\itshape\color{Muted},
+  stringstyle=\color{BrandGreenDark},
+  captionpos=t,
+  aboveskip=0.8em,
+  belowskip=0.8em
+}
+\lstset{style=roboticscode}
+
+% ============================================================
+% 9. Figure / image helper
+% ============================================================
+\newcommand{\ImagePlaceholder}[2][55mm]{%
+  \begin{center}
+  \begin{tikzpicture}
+    \draw[fill=PaperSoft,draw=Rule,rounded corners=2mm]
+      (0,0) rectangle (0.92\linewidth,#1);
+    \node[align=center,text=Muted] at (0.46\linewidth,0.5*#1)
+      {\large\bfseries IMAGE\\[0.4em]\normalsize #2};
+  \end{tikzpicture}
+  \end{center}
+}
+
+% ============================================================
+% 10. Cover page
+% ============================================================
+\newcommand{\MakeRoboticsCover}{%
+  \hypersetup{pageanchor=false}%
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \begin{tikzpicture}[remember picture,overlay]
+      \fill[BrandGreenSoft]
+        ([xshift=-48mm,yshift=0mm]current page.south east)
+        -- (current page.south east)
+        -- ([yshift=64mm]current page.south east)
+        -- cycle;
+    \end{tikzpicture}
+
+    \vspace*{10mm}
+    \begin{minipage}{\textwidth}
+      \RoboticsLogo[55mm]
+    \end{minipage}
+
+    \vfill
+    \eyebrow{Technical / Team Document}
+    {\fontsize{27}{32}\selectfont\bfseries\color{BrandGreenDark}\DocumentTitle\par}
+    \vspace{4mm}
+    {\Large\color{Muted}\DocumentSubtitle\par}
+    \vspace{10mm}
+    \color{BrandGreen}\rule{24mm}{2.2pt}
+
+    \vfill
+    \begin{tabularx}{\textwidth}{@{}>{\bfseries\color{Muted}}l X@{}}
+      Author & \DocumentAuthor \\
+      Date & \DocumentDate \\
+      Version & \DocumentVersion \\
+    \end{tabularx}
+    \vspace*{8mm}
+  \end{titlepage}
+  \clearpage
+  \setcounter{page}{1}
+  \hypersetup{pageanchor=true}%
+  \pagestyle{robotics}
+}
+
+% ============================================================
+% DOCUMENT
+% ============================================================
+\begin{document}
+
+\MakeRoboticsCover
+
+\eyebrow{Overview}
+\section{Template structure}
+
+This template translates the EdUHK Robotics Team's web/CSS visual language into a practical A4 format for technical documentation. It combines the team's green accent system, official horizontal logo, clean sans-serif typography, reusable cards, tables, and a light-blue code area.
+
+\begin{infobox}[Included code example]
+The example in this document is the \textbf{Robocon 2026 EdUHK Robotics Team R2 Arduino IMU and encoder receiver program}. It is reproduced from \texttt{enc\_imu\_may31.ino} and credited to \textbf{Steven Zhang Yancheng}.\\
+\textbf{Source:} \href{\CodeSourceURL}{Steven-ZYC/Robocon2026\_r2 on GitHub (dev branch)}
+\end{infobox}
+
+\subsection{Program role}
+
+The Arduino sketch reads two quadrature encoders, parses LPBUS IMU packets received on \texttt{Serial3}, combines heading, angular rate, acceleration, and encoder counts into one payload, and appends a CRC-8/ATM checksum before serial output.
+
+\begin{tabularx}{\textwidth}{@{}>{\bfseries}l X@{}}
+\toprule
+Area & Implementation \\
+\midrule
+Controller & Arduino Mega 2560 serial and interrupt interfaces \\
+Encoders & Two AMT103 quadrature channels, decoded at four times resolution \\
+IMU & LPBUS packet parser on \texttt{Serial3} at 115200 baud \\
+Output & Timestamped IMU/encoder payload with CRC-8/ATM \\
+Credit & Steven Zhang Yancheng, Robocon 2026 EdUHK Robotics Team R2 \\
+\bottomrule
+\end{tabularx}
+
+\section{Reusable content blocks}
+
+\begin{neutralbox}[Design note]
+Use neutral cards for context, constraints, assumptions, or supplementary explanations. The green-accented information card is better for key decisions, warnings, and important takeaways.
+\end{neutralbox}
+
+\begin{infobox}[Template usage]
+Change the metadata commands near the top of the source file, replace the sample body, and keep only the components needed for the final report.
+\end{infobox}
+
+\section{Image placement}
+
+Replace the placeholder below with a normal \texttt{figure} environment and \texttt{\textbackslash includegraphics} when an image, CAD render, or system diagram is available.
+
+\ImagePlaceholder[42mm]{Robot photograph / CAD render / system diagram}
+
+\section{Example table}
+
+\begin{tabularx}{\textwidth}{@{}>{\bfseries}l X r@{}}
+\toprule
+Module & Description & Status \\
+\midrule
+Encoder input & AMT103 X/Y quadrature channels & Active \\
+IMU link & LPBUS packets received over \texttt{Serial3} & Active \\
+Packet output & Combined telemetry with CRC-8/ATM & Testing \\
+\bottomrule
+\end{tabularx}
+
+\vfill
+{\small\color{Muted}Replace the sample image and table with project-specific content.}
+
+\clearpage
+\eyebrow{Code Example}
+\section{Arduino IMU and encoder receiver}
+
+\begin{infobox}[Robocon 2026 EdUHK Robotics Team R2]
+Arduino program for receiving IMU and encoder data.\\
+\textbf{By Steven Zhang Yancheng}\\
+\textbf{Source:} \href{\CodeSourceURL}{Robocon2026\_r2/enc\_imu\_may31.ino}
+\end{infobox}
+
+\lstinputlisting[
+  language=C++,
+  caption={Robocon 2026 EdUHK Robotics Team R2 Arduino IMU and encoder receiver program - by Steven Zhang Yancheng},
+  label={lst:enc-imu-receiver}
+]{\CodeExampleFile}
+
+\end{document}
