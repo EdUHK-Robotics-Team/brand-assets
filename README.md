@@ -81,6 +81,8 @@ Authorization must be obtained directly from the relevant department before use.
 
 For the use of university-level logos, branding, or other official assets of **The Education University of Hong Kong (EdUHK)**, authorization must be sought from the University through the **Communications Office**.
 
+For official logo signatures, logos, acronym signatures, and detailed brand application guidelines, please refer to the [EdUHK University Logo webpage](https://www.eduhk.hk/en/about/university-logo).
+
 **Communications Office**  
 [co@eduhk.hk](mailto:co@eduhk.hk)
 
